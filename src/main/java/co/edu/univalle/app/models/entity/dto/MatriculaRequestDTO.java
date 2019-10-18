@@ -5,6 +5,8 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import co.edu.univalle.app.validator.Validator;
+
 public class MatriculaRequestDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -80,4 +82,7 @@ public class MatriculaRequestDTO implements Serializable {
 		this.registro_usuario = registro_usuario;
 	}
 
+	public void validate() throws Exception {
+		Validator.validateStateMatricula(this.estado);
+	}
 }

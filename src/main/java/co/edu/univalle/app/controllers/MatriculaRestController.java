@@ -34,7 +34,9 @@ public class MatriculaRestController {
 	}
 
 	@PostMapping(value = "/crear", produces = { "application/json" })
-	public Matricula crear(@RequestBody MatriculaRequestDTO matriculaRequestDTO) {
+	public Matricula crear(@RequestBody MatriculaRequestDTO matriculaRequestDTO) throws Exception {
+
+		matriculaRequestDTO.validate();
 		Matricula matricula = matriculaService.inicializar(matriculaRequestDTO);
 		matricula.setRegistro_fecha(new Date());
 		matriculaService.save(matricula);
